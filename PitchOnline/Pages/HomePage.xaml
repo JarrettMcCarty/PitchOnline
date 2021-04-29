@@ -1,0 +1,71 @@
+﻿<local:BasePage x:TypeArguments="core:LoginViewModel"  x:Class="PitchOnline.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:core="clr-namespace:PitchOnline.Core;assembly=PitchOnline.Core"
+      xmlns:local="clr-namespace:PitchOnline"
+      mc:Ignorable="d" 
+      x:Name="Page"
+      d:DesignHeight="700" d:DesignWidth="700"
+      Title="Home">
+
+    <Border Background="{StaticResource UIDarkThemeGreyBrush}">
+
+        <!-- Content -->
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Height="100" Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Opacity=".75" VerticalAlignment="Center" Text="Go Online" FontSize="{StaticResource FontSizeLarge}" FontFamily="{StaticResource LatoBold}" Foreground="{StaticResource UIDarkThemeLightGreyBrush}"/>
+
+            </Grid>
+
+            <Grid Height="100" Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource PlayButton}" Content="Pitch" Command="{Binding LobbiesListViewModel.LobbyListCommand,
+                                     Source={x:Static local:ViewModelLocator.Instance}}"/>
+
+            </Grid>
+
+            <Grid Height="100" Grid.Row="3">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Opacity=".75" VerticalAlignment="Center" Text="Play Offline" FontSize="{StaticResource FontSizeLarge}" FontFamily="{StaticResource LatoBold}" Foreground="{StaticResource UIDarkThemeLightGreyBrush}"/>
+
+            </Grid>
+            <Grid Height="100" Grid.Row="4">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Opacity=".5" Style="{StaticResource PlayButton}" Grid.Column="2" Content="Pitch (AI)" ToolTip="Coming Soon..." />
+
+            </Grid>
+ 
+        </Grid>
+
+
+    </Border>
+</local:BasePage>

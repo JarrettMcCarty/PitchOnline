@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="PitchOnline.UserMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PitchOnline"
+             xmlns:core="clr-namespace:PitchOnline.Core;assembly=PitchOnline.Core"
+             mc:Ignorable="d"
+             x:Uid="usermenu"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+
+            <!-- Main background -->
+            <Border Background="{StaticResource UIDarkThemeGreyBrush}">
+                <!-- Content -->
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Top Menu -->
+                    <Grid Height="50" Background="{StaticResource UIDarkThemeMediumGreyBrush}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Main buttons -->
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <Button Foreground="{StaticResource WordSilverBrush}"  Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeChatIcon}" ToolTip="Beta coming soon..."/>
+                            <Button Foreground="{StaticResource WordSilverBrush}"  Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeUserIcon}" ToolTip="Beta coming soon..."/>
+                        </StackPanel>
+                        
+                        <!-- Settings button -->
+                        <Button Grid.Column="2" Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeCogIcon}" 
+                                Command="{Binding SettingsViewModel.OpenCommand, 
+                                     Source={x:Static local:ViewModelLocator.Instance}}"/>
+
+                    </Grid>
+
+                    <!-- The user content -->
+                    <Border Background="{StaticResource UIDarkThemeMediumGreyBrush}" Grid.Row="1">
+                       <ContentPresenter/> 
+                    </Border>
+
+                </Grid>
+
+
+            </Border>
+
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

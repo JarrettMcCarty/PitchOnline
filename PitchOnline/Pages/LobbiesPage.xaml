@@ -1,0 +1,84 @@
+﻿<local:BasePage x:TypeArguments="core:LobbiesListViewModel" x:Class="PitchOnline.LobbiesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PitchOnline"
+      xmlns:core="clr-namespace:PitchOnline.Core;assembly=PitchOnline.Core"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      x:Name="Page"
+      Title="RoomPage">
+
+    <Grid Background="{StaticResource UIDarkThemeGreyBrush}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Style="{StaticResource IconGrowButton}"
+                    Height="40"
+                    Content="{StaticResource FontAwesomeArrowLeftIcon}"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Foreground="{StaticResource UIDarkThemeLightGreyBrush}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Panel.ZIndex="4"
+                    Command="{Binding CloseCommand}"
+                    />
+        <TextBlock Margin="50 2 0 0" Opacity=".75" VerticalAlignment="Top" Text="Lobbies" FontSize="{StaticResource FontSizeLarge}" FontFamily="{StaticResource LatoBold}" Foreground="{StaticResource UIDarkThemeLightGreyBrush}"/>
+        <!--<Button Style="{StaticResource PlayButton}" />-->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl  Margin="50 50 0 0" VerticalAlignment="Center" ItemsSource="{Binding Rooms}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:LobbiesItemControl Margin="0 0 0 5" />
+                        <!--<Button Command="{Binding JoinLobbyCommand}" CommandParameter="{Binding ShortId}" IsEnabled="{Binding IsJoinable}">
+                            
+                        </Button>-->
+                        <!--
+                            <ContentControl>
+                                <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{} {0} {1}">
+                                        <Binding Path="roomname"/>
+                                        <Binding Path="roomname"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            </ContentControl>
+                            -->
+                        <!--<Button Content="{Binding roomname}" Style="{StaticResource PlayButton}"/>-->
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                
+                <!--
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Padding="20" Content="test" 
+                                Command="{Binding LobbyCommand}" 
+                                Style="{StaticResource PlayButton}"
+                                CommandParameter="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}}"
+                               
+                                />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                -->
+                
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <Button Padding="40" Grid.Column="1" Content="Create Lobby" Command="{Binding CreateLobbyCommand}" Style="{StaticResource PlayButton}"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding ErrorMessage}" Foreground="Red" FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeLarge}"/>
+    </Grid>
+</local:BasePage>
